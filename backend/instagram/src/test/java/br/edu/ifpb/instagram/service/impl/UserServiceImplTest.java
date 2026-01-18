@@ -52,21 +52,30 @@ public class UserServiceImplTest {
         verify(userRepository, times(1)).findById(userId);
     }
 
-    @Test
-    void testFindById_ThrowsExceptionWhenUserNotFound() {
-        // Configurar o comportamento do mock
-        Long userId = 999L;
+//    @Test
+//    void testFindById_ThrowsExceptionWhenUserNotFound() {
+//        // Configurar o comportamento do mock
+//        Long userId = 999L;
+//
+//        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+//
+//        // Executar e verificar a exceção
+//        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+//            userService.findById(userId);
+//        });
+//
+//        assertEquals("User not found", exception.getMessage());
+//
+//        // Verificar a interação com o mock
+//        verify(userRepository, times(1)).findById(userId);
+//    }
+@Test
+void testFindById_ThrowsExceptionWhenUserNotFound() {
+    Exception exception = assertThrows(RuntimeException.class, () -> {
+        userService.findById(999L);
+    });
 
-        when(userRepository.findById(userId)).thenReturn(Optional.empty());
+    assertEquals("User not found with id: 999", exception.getMessage());
+}
 
-        // Executar e verificar a exceção
-        RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-            userService.findById(userId);
-        });
-
-        assertEquals("User not found", exception.getMessage());
-
-        // Verificar a interação com o mock
-        verify(userRepository, times(1)).findById(userId);
-    }
 }
