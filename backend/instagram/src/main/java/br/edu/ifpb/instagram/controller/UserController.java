@@ -18,7 +18,7 @@ import br.edu.ifpb.instagram.model.response.UserDetailsResponse;
 import br.edu.ifpb.instagram.service.UserService;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;
