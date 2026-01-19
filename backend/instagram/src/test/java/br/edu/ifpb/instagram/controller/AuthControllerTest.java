@@ -38,7 +38,7 @@ class AuthControllerTest {
     @MockitoBean
     private UserService userService;
 
-    // ================= SIGNUP =================
+
 
     @Test
     void shouldSignUpUserSuccessfully() throws Exception {
@@ -52,7 +52,6 @@ class AuthControllerTest {
                 .andExpect(status().isCreated());
     }
 
-    // ================= SIGNIN =================
 
     @Test
     void shouldSignInSuccessfully() throws Exception {
@@ -70,7 +69,6 @@ class AuthControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // ================= AUX =================
 
     private HashMap<String, Object> validRequest() {
         var request = new HashMap<String, Object>();

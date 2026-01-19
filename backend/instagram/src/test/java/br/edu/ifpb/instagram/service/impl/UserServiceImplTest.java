@@ -44,7 +44,7 @@ class UserServiceImplTest {
         existingUser.setEncryptedPassword("encrypted123");
     }
 
-    // ==== CREATE USER ====
+
     @Test
     void shouldCreateUserSuccessfully() {
         UserDto dto = new UserDto(null, "Lucas", "lucas", "lucas@email.com", "123456", null);
@@ -96,7 +96,7 @@ class UserServiceImplTest {
         verify(userRepository, never()).save(any());
     }
 
-    // ==== FIND BY ID ====
+
     @Test
     void shouldReturnUserDtoWhenUserExists() {
         when(userRepository.findById(existingUser.getId())).thenReturn(Optional.of(existingUser));
@@ -120,7 +120,7 @@ class UserServiceImplTest {
         assertEquals("User not found with id: " + invalidId, ex.getMessage());
     }
 
-    // ==== UPDATE USER ====
+
     @Test
     void shouldUpdateUserSuccessfully() {
         UserDto dto = new UserDto(1L, "Paulo Updated", "paulo", "paulo@email.com", "newpass", null);
@@ -173,7 +173,7 @@ class UserServiceImplTest {
         assertEquals("UserDto or UserDto.id must not be null", ex.getMessage());
     }
 
-    // ==== DELETE USER ====
+
     @Test
     void shouldDeleteUserSuccessfully() {
         when(userRepository.existsById(existingUser.getId())).thenReturn(true);
@@ -192,7 +192,7 @@ class UserServiceImplTest {
         assertEquals("User not found with id: 99", ex.getMessage());
     }
 
-    // ==== FIND ALL ====
+
     @Test
     void shouldReturnAllUsers() {
         UserEntity user2 = new UserEntity();
